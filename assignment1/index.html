@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Shopping List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Welcome back!</h1>
+    <p>Anything to shop for today?</p>
+
+    <!-- Text input -->
+
+    <input type="text" id="input" />
+    <button onclick="addItem()">Add</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+
+    <script src="script.js"></script>
+  </body>
+</html>

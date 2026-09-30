@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Posts Manager</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button>Add Post</button>
+    <dialog>
+      <form>
+        <label for="title">Post title</label>
+        <input type="text" name="title" id="title" />
+
+        <label for="body">Post body</label>
+        <input type="text" name="body" id="body" />
+
+        <button type="submit">submit</button>
+      </form>
+
+      <div></div>
+      <!-- show returned id, title, body -->
+    </dialog>
+
+    <form>
+      <label for="search">Search</label>
+      <input type="text" id="search" name="search" placeholder="type here" />
+      <button type="submit">submit</button>
+    </form>
+
+    <label for="sort">Sort by</label>
+    <select name="sort" id="sort">
+      <option value="AZ">A → Z</option>
+      <option value="ZA">Z → A</option>
+      <option value="idAsc">ID Ascending</option>
+      <option value="idDesc">ID Descending</option>
+    </select>
+
+    <section>
+      <ol>
+        <!-- display posts, make li element from JS -->
+      </ol>
+
+      <nav>
+        <button>← prev</button>
+        <button>next →</button>
+      </nav>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>

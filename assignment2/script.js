@@ -1,6 +1,13 @@
 let modal = document.getElementById("modal");
 let openBtn = document.getElementById("open-btn");
 
+const prev = document.getElementById("prev-btn");
+const next = document.getElementById("next-btn");
+const postElements = document.getElementById("posts-list");
+let page = 1;
+let totalPages = 1;
+let limit = 5;
+
 openBtn.onclick = () => {
 	modal.showModal();
 };
@@ -71,3 +78,48 @@ document.getElementById("add-form").addEventListener("submit", async (e) => {
 		`;
 	}
 });
+
+prev.addEventListener("click", () => {
+	if (page > 1) {
+		page--;
+		getPosts();
+	}
+});
+
+next.addEventListener("click", () => {
+	if (page < totalPages) {
+		page++;
+		getPosts();
+	}
+});
+
+async function getPosts() {
+	// 1. fetch from API
+	const response = await fetch(
+		// &title_like=foo&_sort=id&_order=desc
+		`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`,
+	);
+
+	// 2. convert response to usable javascript JSON
+	const posts = await response.json();
+
+	// 3. get total amount of pages from header then divide by 5
+	const total = Number(response.headers.get("x-total-count"));
+	totalPages = Math.ceil(total / limit);
+
+	// 4. clear old posts from generating new one
+	postElements.innerHTML = "";
+
+	// 5. generate new posts
+	posts.forEach((post) => {
+		const li = document.createElement("li");
+		li.textContent = post.id + " || " + post.title + " || " + post.body;
+		postElements.append(li);
+	});
+
+	// disable buttons
+	prev.disabled = page === 1;
+	next.disabled = page === totalPages;
+}
+
+getPosts();

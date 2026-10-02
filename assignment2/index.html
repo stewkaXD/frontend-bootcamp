@@ -29,7 +29,7 @@
 			</dialog>
 			<br />
 
-			<form>
+			<form id="search-form" method="get">
 				<label for="search">Search</label>
 				<input
 					type="text"
@@ -50,13 +50,11 @@
 			</select>
 
 			<section>
-				<ol>
-					<!-- display posts, make li element from JS -->
-				</ol>
+				<ol id="posts-list"></ol>
 
 				<nav>
-					<button>← prev</button>
-					<button>next →</button>
+					<button id="prev-btn">← prev</button>
+					<button id="next-btn">next →</button>
 				</nav>
 			</section>
 		</main>

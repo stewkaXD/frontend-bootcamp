@@ -81,6 +81,10 @@ document.getElementById("add-form").addEventListener("submit", async (e) => {
 			<strong>Body: </strong> ${result.body} <br>
 		`;
 	}
+
+	setTimeout(() => {
+		modal.close();
+	}, 2500);
 });
 
 prev.addEventListener("click", () => {

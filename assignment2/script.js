@@ -7,6 +7,7 @@ const postElements = document.getElementById("posts-list");
 let page = 1;
 let totalPages = 1;
 let limit = 5;
+let searchInput = "";
 
 openBtn.onclick = () => {
 	modal.showModal();
@@ -93,11 +94,21 @@ next.addEventListener("click", () => {
 	}
 });
 
+document.getElementById("search-form").addEventListener("submit", async (e) => {
+	e.preventDefault();
+
+	const input = document.getElementById("search").value;
+
+	// split, become array of words based on spaces, then insert into searchInput global var
+	searchInput = input.trim().split(" ").join("+");
+	getPosts();
+});
+
 async function getPosts() {
 	// 1. fetch from API
 	const response = await fetch(
-		// &title_like=foo&_sort=id&_order=desc
-		`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`,
+		// sort=id&_order=desc
+		`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}&title_like=${searchInput}`,
 	);
 
 	// 2. convert response to usable javascript JSON

@@ -104,6 +104,7 @@ document.getElementById("search-form").addEventListener("submit", async (e) => {
 
 	// split, become array of words based on spaces, then insert into searchInput global var
 	searchInput = input.trim().split(" ").join("+");
+	page = 1;
 	getPosts();
 });
 
@@ -112,7 +113,7 @@ selectElement.addEventListener("change", async (e) => {
 
 	field = value[0];
 	sortType = value[1];
-
+	page = 1;
 	getPosts();
 });
 

@@ -1,0 +1,33 @@
+main {
+	text-align: center;
+	margin-top: 100px;
+}
+
+#modal {
+	z-index: 1;
+	overflow: auto;
+	width: 35%;
+}
+
+#add-form {
+	display: flex;
+	flex-direction: column;
+}
+
+#add-btn {
+	width: 100px;
+	margin-left: auto;
+	margin-right: 0;
+}
+
+.error {
+	color: red;
+	margin-top: 0;
+	margin-left: 0;
+	margin-right: auto;
+}
+
+ol {
+	width: fit-content;
+	margin: 20px auto;
+}

@@ -4,10 +4,13 @@ let openBtn = document.getElementById("open-btn");
 const prev = document.getElementById("prev-btn");
 const next = document.getElementById("next-btn");
 const postElements = document.getElementById("posts-list");
+const selectElement = document.getElementById("sort-by");
 let page = 1;
 let totalPages = 1;
 let limit = 5;
 let searchInput = "";
+let field = ""; // title or id
+let sortType = ""; // asc or desc
 
 openBtn.onclick = () => {
 	modal.showModal();
@@ -104,11 +107,20 @@ document.getElementById("search-form").addEventListener("submit", async (e) => {
 	getPosts();
 });
 
+selectElement.addEventListener("change", async (e) => {
+	const value = e.target.value.split(" ");
+
+	field = value[0];
+	sortType = value[1];
+
+	getPosts();
+});
+
 async function getPosts() {
 	// 1. fetch from API
 	const response = await fetch(
 		// sort=id&_order=desc
-		`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}&title_like=${searchInput}`,
+		`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}&title_like=${searchInput}&_sort=${field}&_order=${sortType}`,
 	);
 
 	// 2. convert response to usable javascript JSON

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasury Transaction Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Treasury Transaction Manager</h1>
+
+    <section>
+        <h2>Sort</h2>
+        <label>
+            Algorithm
+            <select id="sort-algorithm">
+                <option value="bubble">Bubble Sort</option>
+                <option value="merge">Merge Sort</option>
+            </select>
+        </label>
+        <label>
+            Field
+            <select id="sort-field">
+                <option value="amount">Amount</option>
+                <option value="date">Date</option>
+                <option value="customer">Customer</option>
+            </select>
+        </label>
+        <button id="sort-btn" type="button">Sort</button>
+        <p id="sort-info"></p>
+    </section>
+
+    <section>
+        <h2>Search</h2>
+        <label>
+            Type
+            <select id="search-type">
+                <option value="linear">Linear Search (customer name)</option>
+                <option value="binary">Binary Search (id)</option>
+            </select>
+        </label>
+        <label>
+            Query
+            <input id="search-query" type="text" placeholder="Customer name or TXN id">
+        </label>
+        <button id="search-btn" type="button">Search</button>
+        <p id="search-info"></p>
+        <div id="search-result"></div>
+    </section>
+
+    <section>
+        <h2>Transactions</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Customer</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody id="transaction-body"></tbody>
+        </table>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
